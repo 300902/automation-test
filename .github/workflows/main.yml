@@ -36,7 +36,7 @@ jobs:
       continue-on-error: true
     
     - name: Generate API Test Report
-      run: mvn cucumber-reporting:generate -Dcucumber.report.json=target/cucumber-reports/api-tests.json
+      run: mvn cucumber-reporting:generate -DjsonFiles=target/cucumber-reports/api-tests.json
       if: always()
     
     - name: Upload API Test Results
@@ -95,7 +95,7 @@ jobs:
       continue-on-error: true
     
     - name: Generate UI Test Report
-      run: mvn cucumber-reporting:generate -Dcucumber.report.json=target/cucumber-reports/ui-tests.json
+      run: mvn cucumber-reporting:generate -DjsonFiles=target/cucumber-reports/ui-tests.json
       if: always()
     
     - name: Upload UI Test Results

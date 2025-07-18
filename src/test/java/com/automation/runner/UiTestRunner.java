@@ -12,7 +12,7 @@ import io.cucumber.junit.platform.engine.Constants;
 @SelectClasspathResource("features/ui")
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, 
                        value = "pretty," +
-                               "html:target/cucumber-reports/ui," +
+                               "html:target/cucumber-reports/ui-report.html," +
                                "json:target/cucumber-reports/ui-tests.json," +
                                "junit:target/cucumber-reports/ui-tests.xml")
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "com.automation.steps.ui")

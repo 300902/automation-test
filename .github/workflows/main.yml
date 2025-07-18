@@ -67,17 +67,17 @@ jobs:
         retention-days: 7
 
   ui-tests:
-    - name: List cucumber-reports directory
-      run: ls -l target/cucumber-reports/
-
-    - name: Check for Cucumber JSON Report
-      run: |
-        if [ ! -f target/cucumber-reports/ui-tests.json ]; then
-          echo "Cucumber JSON report not found!"
-          exit 1
-        fi
     runs-on: ubuntu-latest
     name: UI Tests
+    steps:
+      - name: List cucumber-reports directory
+        run: ls -l target/cucumber-reports/
+      - name: Check for Cucumber JSON Report
+        run: |
+          if [ ! -f target/cucumber-reports/ui-tests.json ]; then
+            echo "Cucumber JSON report not found!"
+            exit 1
+          fi
     
     steps:
     - name: Checkout repository

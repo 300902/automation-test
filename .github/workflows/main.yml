@@ -25,8 +25,14 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Install Maven dependencies
         run: mvn clean compile test-compile
-      - name: Run API Tests and Generate Report
-        run: mvn verify -Dtest=ApiTestRunner
+      - name: Run API Tests
+        run: mvn test -Dtest=ApiTestRunner
+      - name: Generate API HTML Report
+        run: |
+          mvn net.masterthought:maven-cucumber-reporting:5.7.6:generate \
+            -DprojectName="API Automation Testing" \
+            -DoutputDirectory="target/cucumber-reports/api" \
+            -DjsonFiles="target/cucumber-reports/api-tests.json"
       - name: List Cucumber Reports Directory
         run: ls -l target/cucumber-reports/
       - name: Check for API JSON Report

@@ -9,17 +9,7 @@ on:
 jobs:
   api-tests:
     runs-on: ubuntu-latest
-    steps:
-      - name: List cucumber-reports directory
-        run: ls -l target/cucumber-reports/
-      - name: Check for Cucumber JSON Report
-        run: |
-          if [ ! -f target/cucumber-reports/api-tests.json ]; then
-            echo "Cucumber JSON report not found!"
-            exit 1
-          fi
     name: API Tests
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -78,8 +68,6 @@ jobs:
             echo "Cucumber JSON report not found!"
             exit 1
           fi
-    
-    steps:
     - name: Checkout repository
       uses: actions/checkout@v4
     
@@ -130,21 +118,19 @@ jobs:
         retention-days: 7
 
   full-test-suite:
-    - name: List cucumber-reports directory
-      run: ls -l target/cucumber-reports/
-
-    - name: Check for Cucumber JSON Report
-      run: |
-        if [ ! -f target/cucumber-reports/all-tests.json ]; then
-          echo "Cucumber JSON report not found!"
-          exit 1
-        fi
     runs-on: ubuntu-latest
     name: Full Test Suite
     needs: [api-tests, ui-tests]
     if: always()
-    
     steps:
+      - name: List cucumber-reports directory
+        run: ls -l target/cucumber-reports/
+      - name: Check for Cucumber JSON Report
+        run: |
+          if [ ! -f target/cucumber-reports/all-tests.json ]; then
+            echo "Cucumber JSON report not found!"
+            exit 1
+          fi
     - name: Checkout repository
       uses: actions/checkout@v4
     

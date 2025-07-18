@@ -8,16 +8,16 @@ on:
 
 jobs:
   api-tests:
-    - name: List cucumber-reports directory
-      run: ls -l target/cucumber-reports/
-
-    - name: Check for Cucumber JSON Report
-      run: |
-        if [ ! -f target/cucumber-reports/api-tests.json ]; then
-          echo "Cucumber JSON report not found!"
-          exit 1
-        fi
     runs-on: ubuntu-latest
+    steps:
+      - name: List cucumber-reports directory
+        run: ls -l target/cucumber-reports/
+      - name: Check for Cucumber JSON Report
+        run: |
+          if [ ! -f target/cucumber-reports/api-tests.json ]; then
+            echo "Cucumber JSON report not found!"
+            exit 1
+          fi
     name: API Tests
     
     steps:

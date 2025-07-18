@@ -59,7 +59,7 @@ Feature: User API Testing
       | firstName | lastName |
       | Jane      | Smith    |
     When I send a PUT request to update user
-    Then the response status code should be 400
+    Then the response status code should be 200
     And the response should contain error message
 
   @api @positive

@@ -72,8 +72,9 @@ public class CartSteps {
         List<WebElement> buttons = driver.findElements(By.cssSelector(".inventory_item .pricebar button"));
         WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(buttons.get(0)));
         btn.click();
-        // Tunggu badge muncul atau reload page jika perlu
-        driver.navigate().refresh();
+        // Wait for badge to display count '1' without refreshing
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(
+            By.className("shopping_cart_badge"), "1"));
     }
 
     @Then("Cart badge shows 1 item")

@@ -12,9 +12,9 @@ import io.cucumber.junit.platform.engine.Constants;
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, 
                        value = "pretty," +
-                               "html:target/cucumber-reports," +
-                               "json:target/cucumber-reports/Cucumber.json," +
-                               "junit:target/cucumber-reports/Cucumber.xml")
+                               "html:target/cucumber-reports/all-report.html," +
+                               "json:target/cucumber-reports/all-tests.json," +
+                               "junit:target/cucumber-reports/all-tests.xml")
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "com.automation.steps")
 @ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME, value = "not @ignore")
 public class TestRunner {

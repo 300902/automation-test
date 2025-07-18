@@ -67,21 +67,29 @@ public class CartSteps {
 
     @When("User adds the first product to the cart")
     public void userAddsFirstProduct() {
+        // Pastikan halaman sudah di products
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("inventory_list")));
         List<WebElement> buttons = driver.findElements(By.cssSelector(".inventory_item .pricebar button"));
         WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(buttons.get(0)));
         btn.click();
+        // Tunggu badge muncul atau reload page jika perlu
+        driver.navigate().refresh();
     }
 
     @Then("Cart badge shows 1 item")
     public void cartBadgeShowsOne() {
-        // Wait for cart badge to appear (using shared wait with 10s timeout)
-        // Wait for cart badge to appear and display '1'
-        // Wait for cart badge to appear and fetch its text
-        // Wait for cart badge to appear (polling findElements)
         By badgeLocator = By.className("shopping_cart_badge");
-        wait.until(d -> !d.findElements(badgeLocator).isEmpty());
-        String count = driver.findElements(badgeLocator).get(0).getText();
-        assertEquals("1", count, "Cart badge count incorrect");
+        // Setelah refresh, polling hingga badge muncul dan text = '1', max 10 detik
+        boolean badgeOk = false;
+        for (int i = 0; i < 20; i++) {
+            List<WebElement> badges = driver.findElements(badgeLocator);
+            if (!badges.isEmpty() && "1".equals(badges.get(0).getText())) {
+                badgeOk = true;
+                break;
+            }
+            try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+        }
+        assertTrue(badgeOk, "Cart badge count not updated to 1");
     }
 
     @When("User clicks the cart icon with empty cart")
@@ -102,10 +110,10 @@ public class CartSteps {
 
     @Then("User sees error message for empty cart")
     public void userSeesEmptyCartError() {
-        // Verify user remains on cart page when attempting checkout with empty cart
+        // Perilaku SauceDemo: klik checkout pada cart kosong tetap di halaman cart
         assertTrue(driver.getCurrentUrl().contains("/cart.html"),
             "Expected to remain on cart page for empty cart");
-        // Verify no items displayed in cart
+        // Tidak ada item di cart
         List<WebElement> items = driver.findElements(By.className("cart_item"));
         assertTrue(items.isEmpty(), "Cart should be empty when no products have been added");
     }

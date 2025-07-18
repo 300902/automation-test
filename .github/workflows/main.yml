@@ -155,7 +155,7 @@ jobs:
       continue-on-error: true
     
     - name: Generate Combined Test Report
-      run: mvn cucumber-reporting:generate
+      run: mvn cucumber-reporting:generate -DjsonFiles=target/cucumber-reports/all-tests.json
       if: always()
     
     - name: Download API Test Results

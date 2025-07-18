@@ -8,6 +8,15 @@ on:
 
 jobs:
   api-tests:
+    - name: List cucumber-reports directory
+      run: ls -l target/cucumber-reports/
+
+    - name: Check for Cucumber JSON Report
+      run: |
+        if [ ! -f target/cucumber-reports/api-tests.json ]; then
+          echo "Cucumber JSON report not found!"
+          exit 1
+        fi
     runs-on: ubuntu-latest
     name: API Tests
     
@@ -58,6 +67,15 @@ jobs:
         retention-days: 7
 
   ui-tests:
+    - name: List cucumber-reports directory
+      run: ls -l target/cucumber-reports/
+
+    - name: Check for Cucumber JSON Report
+      run: |
+        if [ ! -f target/cucumber-reports/ui-tests.json ]; then
+          echo "Cucumber JSON report not found!"
+          exit 1
+        fi
     runs-on: ubuntu-latest
     name: UI Tests
     
@@ -112,6 +130,15 @@ jobs:
         retention-days: 7
 
   full-test-suite:
+    - name: List cucumber-reports directory
+      run: ls -l target/cucumber-reports/
+
+    - name: Check for Cucumber JSON Report
+      run: |
+        if [ ! -f target/cucumber-reports/all-tests.json ]; then
+          echo "Cucumber JSON report not found!"
+          exit 1
+        fi
     runs-on: ubuntu-latest
     name: Full Test Suite
     needs: [api-tests, ui-tests]

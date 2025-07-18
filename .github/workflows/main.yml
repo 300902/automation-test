@@ -27,6 +27,14 @@ jobs:
         run: mvn clean compile test-compile
       - name: Run API Tests and Generate Report
         run: mvn verify -Dtest=ApiTestRunner
+      - name: List Cucumber Reports Directory
+        run: ls -l target/cucumber-reports/
+      - name: Check for API JSON Report
+        run: |
+          if [ ! -f target/cucumber-reports/api-tests.json ]; then
+            echo "Cucumber JSON report not found!"
+            exit 1
+          fi
       - name: Upload API Test Results
         uses: actions/upload-artifact@v4
         with:
@@ -62,6 +70,14 @@ jobs:
         run: mvn clean compile test-compile
       - name: Run UI Tests and Generate Report
         run: mvn verify -Dtest=UiTestRunner
+      - name: List Cucumber Reports Directory
+        run: ls -l target/cucumber-reports/
+      - name: Check for UI JSON Report
+        run: |
+          if [ ! -f target/cucumber-reports/ui-tests.json ]; then
+            echo "Cucumber JSON report not found!"
+            exit 1
+          fi
       - name: Upload UI Test Results
         uses: actions/upload-artifact@v4
         with:
@@ -105,6 +121,14 @@ jobs:
         run: mvn clean compile test-compile
       - name: Run All Tests and Generate Combined Report
         run: mvn verify -Dtest=TestRunner
+      - name: List Cucumber Reports Directory
+        run: ls -l target/cucumber-reports/
+      - name: Check for Combined JSON Report
+        run: |
+          if [ ! -f target/cucumber-reports/all-tests.json ]; then
+            echo "Cucumber JSON report not found!"
+            exit 1
+          fi
       - name: Upload Combined Test Results
         uses: actions/upload-artifact@v4
         with:

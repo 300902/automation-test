@@ -133,17 +133,44 @@
                 <version>5.7.6</version>
                 <executions>
                     <execution>
-                        <id>execution</id>
-                        <phase>test</phase>
+                        <id>generate-cucumber-html-reports-api</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Automation Testing</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                            <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
+                            <projectName>API Automation Testing</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-reports/api</outputDirectory>
                             <jsonFiles>
-                                <param>**/*.json</param>
+                                <param>${project.build.directory}/cucumber-reports/api-tests.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-cucumber-html-reports-ui</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>UI Automation Testing</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-reports/ui</outputDirectory>
+                            <jsonFiles>
+                                <param>${project.build.directory}/cucumber-reports/ui-tests.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-cucumber-html-reports-all</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>All Automation Testing</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                            <jsonFiles>
+                                <param>${project.build.directory}/cucumber-reports/all-tests.json</param>
                             </jsonFiles>
                         </configuration>
                     </execution>

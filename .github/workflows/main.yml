@@ -31,11 +31,7 @@ jobs:
     - name: Install Maven dependencies
       run: mvn clean compile test-compile
     
-    - name: Run API Tests
-      run: mvn test -Dtest=ApiTestRunner
-      continue-on-error: true
-    
-    - name: Generate API Test Report
+    - name: Run API Tests and Generate Report
       run: mvn verify -Dtest=ApiTestRunner
       if: always()
     
@@ -90,11 +86,7 @@ jobs:
     - name: Install Maven dependencies
       run: mvn clean compile test-compile
     
-    - name: Run UI Tests
-      run: mvn test -Dtest=UiTestRunner
-      continue-on-error: true
-    
-    - name: Generate UI Test Report
+    - name: Run UI Tests and Generate Report
       run: mvn verify -Dtest=UiTestRunner
       if: always()
     
@@ -150,11 +142,7 @@ jobs:
     - name: Install Maven dependencies
       run: mvn clean compile test-compile
     
-    - name: Run All Tests
-      run: mvn test -Dtest=TestRunner
-      continue-on-error: true
-    
-    - name: Generate Combined Test Report
+    - name: Run All Tests and Generate Combined Report
       run: mvn verify -Dtest=TestRunner
       if: always()
     

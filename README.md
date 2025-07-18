@@ -37,7 +37,7 @@ automation-testing/
 - **DELETE User**: Valid and invalid ID scenarios
 - **GET Tags**: Basic functionality test
 
-### UI Testing (DemoBlaze.com)
+### UI Testing (SauceDemo)
 - **Login**: Valid credentials, invalid credentials, empty fields
 - **Add to Cart**: Successful addition, invalid attempts
 - **Checkout**: Complete information, incomplete information, invalid card
@@ -109,7 +109,7 @@ After test execution, reports are available in:
 ## Configuration
 
 ### Environment Variables
-- Tests use default configurations for DummyAPI.io and DemoBlaze.com
+- Tests use default configurations for DummyAPI.io and SauceDemo.com
 - Chrome runs in headless mode for CI/CD
 
 ### Parallel Execution
@@ -119,25 +119,46 @@ After test execution, reports are available in:
 ## Test Tags
 
 - `@api`: API-related tests
-- `@ui`: UI-related tests
-- `@positive`: Positive test scenarios
-- `@negative`: Negative test scenarios
-
-## Contributing
-
-1. Clone the repository
-2. Create a feature branch
-3. Add your tests following the existing pattern
-4. Run tests locally to ensure they pass
-5. Create a pull request
-
-## Troubleshooting
-
-### Common Issues
-
+ 
+ 
+## Test Results
+ 
+ 
+### API Tests
+ 
+ 
+\- ✅ User API Testing - Get user by valid ID - Positive Test
+ 
+ 
+ 
+ 
+\- ✅ User API Testing - Get all tags - Positive Test
+ 
+ 
+### UI Tests (SauceDemo)
+ 
+ 
+\- ✅ Add product to cart on SauceDemo - Add an existing product to cart
+ 
+ 
+ 
+ 
+\- ✅ Add product to cart on SauceDemo - Attempt to checkout with empty cart
+ 
+ 
+### SauceDemo Website Login
+ 
+ 
+\- ✅ SauceDemo Website Login - Successful login with valid credentials
+ 
+ 
+ 
+ 
+\- ✅ SauceDemo Website Login - Failed login with empty credentials
+ 
 1. **Chrome Driver Issues**: WebDriverManager automatically handles Chrome driver setup
 2. **API Rate Limits**: DummyAPI.io has rate limits; tests include appropriate waits
-3. **UI Element Changes**: DemoBlaze website elements may change; update selectors accordingly
+3. **UI Element Changes**: SauceDemo website elements may change; update selectors accordingly
 
 ### Debug Mode
 
@@ -160,7 +181,7 @@ For UI tests with visible browser (local development):
 
 ## UI Test Target
 
-- **Website**: https://www.demoblaze.com/
+- **Website**: https://www.saucedemo.com/
 - **Features Tested**:
   - User login functionality
   - Product cart management
@@ -169,3 +190,27 @@ For UI tests with visible browser (local development):
 ## License
 
 This project is for educational and testing purposes.
+
+## Test Results
+
+### API Tests
+- ✅ User API Testing - Get user by valid ID - Positive Test
+- ✅ User API Testing - Get user by invalid ID - Negative Test
+- ✅ User API Testing - Create new user with valid payload - Positive Test
+- ✅ User API Testing - Create user with invalid payload - Negative Test
+- ✅ User API Testing - Create user with invalid email format - Negative Test
+- ✅ User API Testing - Update user with valid ID and payload - Negative Test
+- ✅ User API Testing - Update user with invalid ID - Negative Test
+- ✅ User API Testing - Delete user with valid ID - Negative Test
+- ✅ User API Testing - Delete user with invalid ID - Negative Test
+- ✅ User API Testing - Get all tags - Positive Test
+
+### UI Tests (SauceDemo)
+- ✅ Add product to cart on SauceDemo - Add an existing product to cart
+- ✅ Add product to cart on SauceDemo - Attempt to checkout with empty cart
+
+### SauceDemo Website Login
+- ✅ SauceDemo Website Login - Successful login with valid credentials
+- ✅ SauceDemo Website Login - Failed login with invalid username
+- ✅ SauceDemo Website Login - Failed login with invalid password
+- ✅ SauceDemo Website Login - Failed login with empty credentials

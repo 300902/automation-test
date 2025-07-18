@@ -42,15 +42,15 @@ Feature: User API Testing
     Then the response status code should be 400
     And the response should contain validation error
 
-  @api @negative
-  Scenario: Update user with valid ID and payload - Negative Test
+  @api @positive
+  Scenario: Update user with valid ID and payload - Positive Test
     # Use the user ID created in the previous scenario
     And I have a valid update payload
       | firstName | lastName |
       | Jane      | Smith    |
     When I send a PUT request to update user
-    Then the response status code should be 400
-    And the response should contain error message
+    Then the response status code should be 200
+    And the response should contain updated user details
 
   @api @negative
   Scenario: Update user with invalid ID - Negative Test
@@ -62,12 +62,12 @@ Feature: User API Testing
     Then the response status code should be 400
     And the response should contain error message
 
-  @api @negative
-  Scenario: Delete user with valid ID - Negative Test
+  @api @positive
+  Scenario: Delete user with valid ID - Positive Test
     # Use the user ID created in the previous scenario
     When I send a DELETE request to delete user
-    Then the response status code should be 400
-    And the response should contain error message
+    Then the response status code should be 200
+    And the response should confirm user deletion
 
   @api @negative
   Scenario: Delete user with invalid ID - Negative Test

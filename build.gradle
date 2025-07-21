@@ -1,0 +1,138 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '8.4'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.0.1'
+}
+
+group = 'com.automation'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    cucumberVersion = '7.14.0'
+    seleniumVersion = '4.15.0'
+    restAssuredVersion = '5.3.2'
+    junitVersion = '5.10.0'
+    webDriverManagerVersion = '5.6.2'
+    jacksonVersion = '2.15.2'
+    slf4jVersion = '2.0.9'
+}
+
+dependencies {
+    // Cucumber Dependencies
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+    
+    // JUnit 5 Dependencies
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite:1.10.0"
+    
+    // REST Assured for API Testing
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    testImplementation "io.rest-assured:json-path:${restAssuredVersion}"
+    testImplementation "io.rest-assured:json-schema-validator:${restAssuredVersion}"
+    
+    // Selenium WebDriver
+    testImplementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    testImplementation "io.github.bonigarcia:webdrivermanager:${webDriverManagerVersion}"
+    
+    // JSON Processing
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    testImplementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    testImplementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+    
+    // Logging
+    testImplementation "org.slf4j:slf4j-simple:${slf4jVersion}"
+    
+    // Additional Utilities
+    testImplementation 'org.apache.commons:commons-lang3:3.12.0'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+test {
+    useJUnitPlatform()
+    
+    systemProperties = [
+        'cucumber.junit-platform.naming-strategy': 'long',
+        'cucumber.plugin': 'pretty,html:build/reports/cucumber/cucumber-report.html,json:build/reports/cucumber/cucumber-report.json,junit:build/reports/cucumber/cucumber-report.xml'
+    ]
+    
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+// Task untuk menjalankan API tests saja
+task apiTest(type: Test) {
+    useJUnitPlatform {
+        includeTags 'api'
+    }
+    
+    systemProperties = [
+        'cucumber.junit-platform.naming-strategy': 'long',
+        'cucumber.plugin': 'pretty,html:build/reports/cucumber/api/cucumber-api-report.html,json:build/reports/cucumber/api/cucumber-api-report.json,junit:build/reports/cucumber/api/cucumber-api-report.xml'
+    ]
+    
+    include '**/ApiTestRunner.class'
+    
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+// Task untuk menjalankan Web tests saja
+task webTest(type: Test) {
+    useJUnitPlatform {
+        includeTags 'web'
+    }
+    
+    systemProperties = [
+        'cucumber.junit-platform.naming-strategy': 'long',
+        'cucumber.plugin': 'pretty,html:build/reports/cucumber/web/cucumber-web-report.html,json:build/reports/cucumber/web/cucumber-web-report.json,junit:build/reports/cucumber/web/cucumber-web-report.xml'
+    ]
+    
+    include '**/WebTestRunner.class'
+    
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+// Task untuk menjalankan semua tests
+task allTests(type: Test) {
+    useJUnitPlatform()
+    
+    systemProperties = [
+        'cucumber.junit-platform.naming-strategy': 'long',
+        'cucumber.plugin': 'pretty,html:build/reports/cucumber/all/cucumber-all-report.html,json:build/reports/cucumber/all/cucumber-all-report.json,junit:build/reports/cucumber/all/cucumber-all-report.xml'
+    ]
+    
+    include '**/TestRunner.class'
+    
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+// Ensure directories exist before test execution
+tasks.withType(Test) {
+    doFirst {
+        mkdir 'build/reports/cucumber'
+        mkdir 'build/reports/cucumber/api'
+        mkdir 'build/reports/cucumber/web'
+        mkdir 'build/reports/cucumber/all'
+    }
+}
+
+wrapper {
+    gradleVersion = '8.4'
+    distributionType = Wrapper.DistributionType.BIN
+}

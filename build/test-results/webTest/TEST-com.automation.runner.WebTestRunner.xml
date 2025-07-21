@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.automation.runner.WebTestRunner" tests="7" skipped="0" failures="3" errors="0" timestamp="2025-07-21T08:57:42" hostname="acer-TravelMate-P249-G3-M" time="61.381">
+  <properties/>
+  <testcase name="Add product to cart on SauceDemo - Add an existing product to cart" classname="com.automation.runner.WebTestRunner" time="15.71">
+    <failure message="org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.className: shopping_cart_badge (tried for 10 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.15.0', revision: '1d14b5521b'&#10;System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:34803}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:34803/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 3e79e67501236c4370d9d19ec46de925" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.className: shopping_cart_badge (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:34803}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:34803/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3e79e67501236c4370d9d19ec46de925
+	at app//org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at app//org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at app//com.automation.steps.web.CartSteps.cartBadgeShowsOne(CartSteps.java:83)
+	at ✽.Cart badge shows 1 item(classpath:features/web/cart.feature:8)
+</failure>
+  </testcase>
+  <testcase name="Add product to cart on SauceDemo - Attempt to checkout with empty cart" classname="com.automation.runner.WebTestRunner" time="23.008">
+    <failure message="org.opentest4j.AssertionFailedError: Expected to remain on cart page for empty cart ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Expected to remain on cart page for empty cart ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;
+	at app//com.automation.steps.web.CartSteps.userSeesEmptyCartError(CartSteps.java:106)
+	at ✽.User sees error message for empty cart(classpath:features/web/cart.feature:14)
+</failure>
+  </testcase>
+  <testcase name="Checkout flow on SauceDemo - Full checkout process and logout" classname="com.automation.runner.WebTestRunner" time="7.583">
+    <failure message="org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element found by By.id: menu_button_container to have value &quot;false&quot;. Current value: &quot;&quot; (tried for 3 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.15.0', revision: '1d14b5521b'&#10;System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:32873}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:32873/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: ce893a0bdf34f32ed89fd8e394dbe84a" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element found by By.id: menu_button_container to have value &quot;false&quot;. Current value: &quot;&quot; (tried for 3 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:32873}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:32873/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ce893a0bdf34f32ed89fd8e394dbe84a
+	at app//org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at app//org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at app//com.automation.steps.web.CheckoutSteps.openMenu(CheckoutSteps.java:71)
+	at ✽.I open the menu(classpath:features/web/checkout.feature:11)
+</failure>
+  </testcase>
+  <testcase name="SauceDemo Website Login - Successful login with valid credentials" classname="com.automation.runner.WebTestRunner" time="4.187"/>
+  <testcase name="SauceDemo Website Login - Failed login with invalid username" classname="com.automation.runner.WebTestRunner" time="4.396"/>
+  <testcase name="SauceDemo Website Login - Failed login with invalid password" classname="com.automation.runner.WebTestRunner" time="3.891"/>
+  <testcase name="SauceDemo Website Login - Failed login with empty credentials" classname="com.automation.runner.WebTestRunner" time="2.597"/>
+  <system-out><![CDATA[
+@web @positive
+Scenario: Add an existing product to cart      ?[90m# features/web/cart.feature:6?[0m
+  ?[32mGiven ?[0m?[32mUser is logged in to SauceDemo?[0m         ?[90m# com.automation.steps.web.CartSteps.userIsLoggedIn()?[0m
+  ?[32mWhen ?[0m?[32mUser adds the first product to the cart?[0m ?[90m# com.automation.steps.web.CartSteps.userAddsFirstProduct()?[0m
+  ?[31mThen ?[0m?[31mCart badge shows 1 item?[0m                 ?[90m# com.automation.steps.web.CartSteps.cartBadgeShowsOne()?[0m
+      ?[31morg.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.className: shopping_cart_badge (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:34803}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:34803/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3e79e67501236c4370d9d19ec46de925
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.automation.steps.web.CartSteps.cartBadgeShowsOne(CartSteps.java:83)
+	at ✽.Cart badge shows 1 item(classpath:features/web/cart.feature:8)
+?[0m
+
+@web @negative
+Scenario: Attempt to checkout with empty cart    ?[90m# features/web/cart.feature:11?[0m
+  ?[32mGiven ?[0m?[32mUser is logged in to SauceDemo?[0m           ?[90m# com.automation.steps.web.CartSteps.userIsLoggedIn()?[0m
+  ?[32mWhen ?[0m?[32mUser clicks the cart icon with empty cart?[0m ?[90m# com.automation.steps.web.CartSteps.userClicksCartEmpty()?[0m
+  ?[32mAnd ?[0m?[32mUser proceeds to checkout?[0m                  ?[90m# com.automation.steps.web.CartSteps.userProceedsToCheckout()?[0m
+  ?[31mThen ?[0m?[31mUser sees error message for empty cart?[0m    ?[90m# com.automation.steps.web.CartSteps.userSeesEmptyCartError()?[0m
+      ?[31morg.opentest4j.AssertionFailedError: Expected to remain on cart page for empty cart ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:210)
+	at com.automation.steps.web.CartSteps.userSeesEmptyCartError(CartSteps.java:106)
+	at ✽.User sees error message for empty cart(classpath:features/web/cart.feature:14)
+?[0m
+
+@web @positive
+Scenario: Full checkout process and logout                                    ?[90m# features/web/checkout.feature:7?[0m
+  ?[32mGiven ?[0m?[32mI am on the SauceDemo login page?[0m                                      ?[90m# com.automation.steps.web.LoginSteps.openLoginPage()?[0m
+  ?[32mAnd ?[0m?[32mI have valid username ?[0m?[32m?[1m"standard_user"?[0m?[32m and password ?[0m?[32m?[1m"secret_sauce"?[0m       ?[90m# com.automation.steps.web.CheckoutSteps.setCredentials(java.lang.String,java.lang.String)?[0m
+  ?[32mWhen ?[0m?[32mI login with valid credentials?[0m                                         ?[90m# com.automation.steps.web.CheckoutSteps.loginWithValidCredentials()?[0m
+  ?[31mAnd ?[0m?[31mI open the menu?[0m                                                         ?[90m# com.automation.steps.web.CheckoutSteps.openMenu()?[0m
+      ?[31morg.openqa.selenium.TimeoutException: Expected condition failed: waiting for element found by By.id: menu_button_container to have value "false". Current value: "" (tried for 3 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:32873}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:32873/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ce893a0bdf34f32ed89fd8e394dbe84a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.automation.steps.web.CheckoutSteps.openMenu(CheckoutSteps.java:71)
+	at ✽.I open the menu(classpath:features/web/checkout.feature:11)
+?[0m
+  ?[36mThen ?[0m?[36mthe Logout link should be visible?[0m                                      ?[90m# com.automation.steps.web.CheckoutSteps.verifyLogoutLink()?[0m
+  ?[36mAnd ?[0m?[36mI should see the page title ?[0m?[36m?[1m"Products"?[0m                                  ?[90m# com.automation.steps.web.CheckoutSteps.verifyTitle(java.lang.String)?[0m
+  ?[36mWhen ?[0m?[36mI navigate to the first product detail page?[0m                            ?[90m# com.automation.steps.web.CheckoutSteps.goToFirstProductDetail()?[0m
+  ?[36mThen ?[0m?[36mI should see the product name on detail page?[0m                           ?[90m# com.automation.steps.web.CheckoutSteps.verifyProductNameOnDetail()?[0m
+  ?[36mWhen ?[0m?[36mI add the product to the cart?[0m                                          ?[90m# com.automation.steps.web.CheckoutSteps.addProductToCart()?[0m
+  ?[36mThen ?[0m?[36mI should see a ?[0m?[36m?[1m"Remove"?[0m?[36m button for that product?[0m                        ?[90m# com.automation.steps.web.CheckoutSteps.verifyButtonText(java.lang.String)?[0m
+  ?[36mWhen ?[0m?[36mI go to the cart page?[0m                                                  ?[90m# com.automation.steps.web.CheckoutSteps.goToCart()?[0m
+  ?[36mThen ?[0m?[36mI should see the product ?[0m?[36m?[1m"Sauce Labs Backpack"?[0m?[36m in the cart?[0m             ?[90m# com.automation.steps.web.CheckoutSteps.verifyProductInCart(java.lang.String)?[0m
+  ?[36mWhen ?[0m?[36mI click the checkout button?[0m                                            ?[90m# com.automation.steps.web.CheckoutSteps.clickCheckout()?[0m
+  ?[36mThen ?[0m?[36mI should be on the checkout information page?[0m                           ?[90m# com.automation.steps.web.CheckoutSteps.verifyCheckoutPage()?[0m
+  ?[36mWhen ?[0m?[36mI enter first name ?[0m?[36m?[1m"Jan"?[0m?[36m and last name ?[0m?[36m?[1m"Novak"?[0m?[36m and postal code ?[0m?[36m?[1m"10400"?[0m ?[90m# com.automation.steps.web.CheckoutSteps.fillCheckoutInformation(java.lang.String,java.lang.String,java.lang.String)?[0m
+  ?[36mAnd ?[0m?[36mI continue to the overview page?[0m                                         ?[90m# com.automation.steps.web.CheckoutSteps.continueToOverview()?[0m
+  ?[36mThen ?[0m?[36mI should be on the checkout overview page?[0m                              ?[90m# com.automation.steps.web.CheckoutSteps.verifyOverviewPage()?[0m
+  ?[36mAnd ?[0m?[36mI should see the product ?[0m?[36m?[1m"Sauce Labs Backpack"?[0m?[36m in overview?[0m              ?[90m# com.automation.steps.web.CheckoutSteps.verifyProductInOverview(java.lang.String)?[0m
+  ?[36mWhen ?[0m?[36mI logout from the application?[0m                                          ?[90m# com.automation.steps.web.CheckoutSteps.logout()?[0m
+  ?[36mThen ?[0m?[36mI should be on the login page?[0m                                          ?[90m# com.automation.steps.web.CheckoutSteps.verifyOnLoginPage()?[0m
+
+@web @positive
+Scenario: Successful login with valid credentials ?[90m# features/web/login.feature:10?[0m
+  ?[32mGiven ?[0m?[32mI am on the SauceDemo login page?[0m          ?[90m# com.automation.steps.web.LoginSteps.openLoginPage()?[0m
+  ?[32mWhen ?[0m?[32mI enter username ?[0m?[32m?[1m"standard_user"?[0m           ?[90m# com.automation.steps.web.LoginSteps.enterUsername(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI enter password ?[0m?[32m?[1m"secret_sauce"?[0m             ?[90m# com.automation.steps.web.LoginSteps.enterPassword(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI click the login button?[0m                    ?[90m# com.automation.steps.web.LoginSteps.clickLogin()?[0m
+  ?[32mThen ?[0m?[32mI should be on the Products page?[0m           ?[90m# com.automation.steps.web.LoginSteps.verifyOnProductsPage()?[0m
+  ?[32mAnd ?[0m?[32mI should see a title ?[0m?[32m?[1m"Products"?[0m             ?[90m# com.automation.steps.web.LoginSteps.verifyTitle(java.lang.String)?[0m
+
+@web @negative
+Scenario: Failed login with invalid username ?[90m# features/web/login.feature:18?[0m
+  ?[32mGiven ?[0m?[32mI am on the SauceDemo login page?[0m     ?[90m# com.automation.steps.web.LoginSteps.openLoginPage()?[0m
+  ?[32mWhen ?[0m?[32mI enter username ?[0m?[32m?[1m"invalid_user"?[0m       ?[90m# com.automation.steps.web.LoginSteps.enterUsername(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI enter password ?[0m?[32m?[1m"secret_sauce"?[0m        ?[90m# com.automation.steps.web.LoginSteps.enterPassword(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI click the login button?[0m               ?[90m# com.automation.steps.web.LoginSteps.clickLogin()?[0m
+  ?[32mThen ?[0m?[32mI should see login error message?[0m      ?[90m# com.automation.steps.web.LoginSteps.verifyLoginError()?[0m
+  ?[32mAnd ?[0m?[32mI should still be on the login page?[0m    ?[90m# com.automation.steps.web.LoginSteps.verifyStillOnLoginPage()?[0m
+
+@web @negative
+Scenario: Failed login with invalid password ?[90m# features/web/login.feature:26?[0m
+  ?[32mGiven ?[0m?[32mI am on the SauceDemo login page?[0m     ?[90m# com.automation.steps.web.LoginSteps.openLoginPage()?[0m
+  ?[32mWhen ?[0m?[32mI enter username ?[0m?[32m?[1m"standard_user"?[0m      ?[90m# com.automation.steps.web.LoginSteps.enterUsername(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI enter password ?[0m?[32m?[1m"wrong_password"?[0m      ?[90m# com.automation.steps.web.LoginSteps.enterPassword(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI click the login button?[0m               ?[90m# com.automation.steps.web.LoginSteps.clickLogin()?[0m
+  ?[32mThen ?[0m?[32mI should see login error message?[0m      ?[90m# com.automation.steps.web.LoginSteps.verifyLoginError()?[0m
+  ?[32mAnd ?[0m?[32mI should still be on the login page?[0m    ?[90m# com.automation.steps.web.LoginSteps.verifyStillOnLoginPage()?[0m
+
+@web @negative
+Scenario: Failed login with empty credentials ?[90m# features/web/login.feature:34?[0m
+  ?[32mGiven ?[0m?[32mI am on the SauceDemo login page?[0m      ?[90m# com.automation.steps.web.LoginSteps.openLoginPage()?[0m
+  ?[32mWhen ?[0m?[32mI clear username field?[0m                 ?[90m# com.automation.steps.web.LoginSteps.clearUsername()?[0m
+  ?[32mAnd ?[0m?[32mI clear password field?[0m                  ?[90m# com.automation.steps.web.LoginSteps.clearPassword()?[0m
+  ?[32mAnd ?[0m?[32mI click the login button?[0m                ?[90m# com.automation.steps.web.LoginSteps.clickLogin()?[0m
+  ?[32mThen ?[0m?[32mI should see validation error message?[0m  ?[90m# com.automation.steps.web.LoginSteps.verifyValidationError()?[0m
+]]></system-out>
+  <system-err><![CDATA[Jul 21, 2025 3:57:44 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:57:44 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:57:45 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:57:45 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:57:45 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:57:45 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:57:58 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:57:58 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:57:58 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:57:58 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:57:59 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:57:59 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:21 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:22 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:22 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:23 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:23 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:28 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:28 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:29 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:29 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:30 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:30 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:32 PM org.openqa.selenium.os.ExternalProcess$Builder lambda$start$0
+WARNING: failed to copy the output of process 81737
+java.io.IOException: Stream closed
+	at java.base/java.io.BufferedInputStream.ensureOpen(BufferedInputStream.java:206)
+	at java.base/java.io.BufferedInputStream.implRead(BufferedInputStream.java:411)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:405)
+	at java.base/java.io.InputStream.transferTo(InputStream.java:796)
+	at java.base/java.io.BufferedInputStream.implTransferTo(BufferedInputStream.java:657)
+	at java.base/java.io.BufferedInputStream.transferTo(BufferedInputStream.java:637)
+	at org.openqa.selenium.os.ExternalProcess$Builder.lambda$start$0(ExternalProcess.java:209)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Jul 21, 2025 3:58:33 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:33 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:34 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:34 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:35 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:35 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:38 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:38 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:38 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:38 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:39 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:39 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:41 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:41 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:41 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:41 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jul 21, 2025 3:58:42 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 137
+Jul 21, 2025 3:58:42 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 137.0.7151.103. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+</testsuite>

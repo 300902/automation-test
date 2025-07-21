@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.automation.runner.ApiTestRunner" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-21T07:02:34" hostname="acer-TravelMate-P249-G3-M" time="7.859">
+  <properties/>
+  <testcase name="User API Testing - Get user by valid ID - Positive Test" classname="com.automation.runner.ApiTestRunner" time="2.886"/>
+  <testcase name="User API Testing - Get user by invalid ID - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.483"/>
+  <testcase name="User API Testing - Create new user with valid payload - Positive Test" classname="com.automation.runner.ApiTestRunner" time="0.562"/>
+  <testcase name="User API Testing - Create user with invalid payload - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.479"/>
+  <testcase name="User API Testing - Create user with invalid email format - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.485"/>
+  <testcase name="User API Testing - Update user with valid ID and payload - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.408"/>
+  <testcase name="User API Testing - Update user with invalid ID - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.407"/>
+  <testcase name="User API Testing - Delete user with valid ID - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.409"/>
+  <testcase name="User API Testing - Delete user with invalid ID - Negative Test" classname="com.automation.runner.ApiTestRunner" time="0.421"/>
+  <testcase name="User API Testing - Get all tags - Positive Test" classname="com.automation.runner.ApiTestRunner" time="1.31"/>
+  <system-out><![CDATA[
+@api @positive
+Scenario: Get user by valid ID - Positive Test            ?[90m# features/api/user.feature:10?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                      ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mGiven ?[0m?[32mI have a valid user ID ?[0m?[32m?[1m"60d0fe4f5311236168a10a01"?[0m ?[90m# com.automation.steps.api.UserApiSteps.setValidUserId(java.lang.String)?[0m
+  ?[32mWhen ?[0m?[32mI send a GET request to get user by ID?[0m             ?[90m# com.automation.steps.api.UserApiSteps.getUserById()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m200?[0m             ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain user details?[0m            ?[90m# com.automation.steps.api.UserApiSteps.verifyUserDetails()?[0m
+
+@api @negative
+Scenario: Get user by invalid ID - Negative Test ?[90m# features/api/user.feature:17?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m             ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mGiven ?[0m?[32mI have an invalid user ID ?[0m?[32m?[1m"invalid123"?[0m   ?[90m# com.automation.steps.api.UserApiSteps.setInvalidUserId(java.lang.String)?[0m
+  ?[32mWhen ?[0m?[32mI send a GET request to get user by ID?[0m    ?[90m# com.automation.steps.api.UserApiSteps.getUserById()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m404?[0m    ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain error message?[0m  ?[90m# com.automation.steps.api.UserApiSteps.verifyErrorMessage()?[0m
+
+@api @positive
+Scenario: Create new user with valid payload - Positive Test ?[90m# features/api/user.feature:24?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                         ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mGiven ?[0m?[32mI have a valid user payload?[0m                          ?[90m# com.automation.steps.api.UserApiSteps.setValidUserPayload(io.cucumber.datatable.DataTable)?[0m
+    | firstName | lastName | email                |
+    | John      | Doe      | john.doe@example.com |
+  ?[32mWhen ?[0m?[32mI send a POST request to create user?[0m                  ?[90m# com.automation.steps.api.UserApiSteps.createUserStep()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m200?[0m                ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ User creation validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain the created user details?[0m   ?[90m# com.automation.steps.api.UserApiSteps.verifyCreatedUserDetails()?[0m
+
+@api @negative
+Scenario: Create user with invalid payload - Negative Test ?[90m# features/api/user.feature:33?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                       ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mGiven ?[0m?[32mI have an invalid user payload?[0m                     ?[90m# com.automation.steps.api.UserApiSteps.iHaveAnInvalidUserPayload()?[0m
+  ?[32mWhen ?[0m?[32mI send a POST request to create user?[0m                ?[90m# com.automation.steps.api.UserApiSteps.createUserStep()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m400?[0m              ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Validation error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain validation error?[0m         ?[90m# com.automation.steps.api.UserApiSteps.verifyValidationError()?[0m
+
+@api @negative
+Scenario: Create user with invalid email format - Negative Test            ?[90m# features/api/user.feature:40?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                                       ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mWhen ?[0m?[32mI create a new user with name ?[0m?[32m?[1m"Test User"?[0m?[32m and email ?[0m?[32m?[1m"invalid-email"?[0m ?[90m# com.automation.steps.api.UserApiSteps.createNewUserWithNameAndEmail(java.lang.String,java.lang.String)?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m400?[0m                              ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Validation error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain validation error?[0m                         ?[90m# com.automation.steps.api.UserApiSteps.verifyValidationError()?[0m
+
+@api @negative
+Scenario: Update user with valid ID and payload - Negative Test ?[90m# features/api/user.feature:46?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                            ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mAnd ?[0m?[32mI have a valid update payload?[0m                             ?[90m# com.automation.steps.api.UserApiSteps.setValidUpdatePayload(io.cucumber.datatable.DataTable)?[0m
+    | firstName | lastName |
+    | Jane      | Smith    |
+[DEBUG] Updating user with ID: null
+  ?[32mWhen ?[0m?[32mI send a PUT request to update user?[0m                      ?[90m# com.automation.steps.api.UserApiSteps.updateUserStep()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m400?[0m                   ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain error message?[0m                 ?[90m# com.automation.steps.api.UserApiSteps.verifyErrorMessage()?[0m
+
+@api @negative
+Scenario: Update user with invalid ID - Negative Test ?[90m# features/api/user.feature:56?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                  ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mGiven ?[0m?[32mI have an invalid user ID ?[0m?[32m?[1m"invalid123"?[0m        ?[90m# com.automation.steps.api.UserApiSteps.setInvalidUserId(java.lang.String)?[0m
+  ?[32mAnd ?[0m?[32mI have a valid update payload?[0m                   ?[90m# com.automation.steps.api.UserApiSteps.setValidUpdatePayload(io.cucumber.datatable.DataTable)?[0m
+    | firstName | lastName |
+    | Jane      | Smith    |
+[DEBUG] Updating user with ID: invalid123
+  ?[32mWhen ?[0m?[32mI send a PUT request to update user?[0m            ?[90m# com.automation.steps.api.UserApiSteps.updateUserStep()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m400?[0m         ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain error message?[0m       ?[90m# com.automation.steps.api.UserApiSteps.verifyErrorMessage()?[0m
+
+@api @negative
+Scenario: Delete user with valid ID - Negative Test ?[90m# features/api/user.feature:66?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+[DEBUG] Deleting user with ID: null
+  ?[32mWhen ?[0m?[32mI send a DELETE request to delete user?[0m       ?[90m# com.automation.steps.api.UserApiSteps.deleteUserStep()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m400?[0m       ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain error message?[0m     ?[90m# com.automation.steps.api.UserApiSteps.verifyErrorMessage()?[0m
+
+@api @negative
+Scenario: Delete user with invalid ID - Negative Test ?[90m# features/api/user.feature:73?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m                  ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mGiven ?[0m?[32mI have an invalid user ID ?[0m?[32m?[1m"invalid123"?[0m        ?[90m# com.automation.steps.api.UserApiSteps.setInvalidUserId(java.lang.String)?[0m
+[DEBUG] Deleting user with ID: invalid123
+  ?[32mWhen ?[0m?[32mI send a DELETE request to delete user?[0m         ?[90m# com.automation.steps.api.UserApiSteps.deleteUserStep()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m400?[0m         ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Error response validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain error message?[0m       ?[90m# com.automation.steps.api.UserApiSteps.verifyErrorMessage()?[0m
+
+@api @positive
+Scenario: Get all tags - Positive Test         ?[90m# features/api/user.feature:80?[0m
+  ?[32mGiven ?[0m?[32mthe DummyAPI base URL is set?[0m           ?[90m# com.automation.steps.api.UserApiSteps.setBaseUrl()?[0m
+  ?[32mWhen ?[0m?[32mI send a GET request to get all tags?[0m    ?[90m# com.automation.steps.api.UserApiSteps.getAllTags()?[0m
+  ?[32mThen ?[0m?[32mthe response status code should be ?[0m?[32m?[1m200?[0m  ?[90m# com.automation.steps.api.UserApiSteps.verifyStatusCode(int)?[0m
+✅ Tags list validation passed
+  ?[32mAnd ?[0m?[32mthe response should contain list of tags?[0m ?[90m# com.automation.steps.api.UserApiSteps.verifyTagsList()?[0m
+]]></system-out>
+  <system-err><![CDATA[[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+[Test worker] DEBUG io.restassured.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+]]></system-err>
+</testsuite>

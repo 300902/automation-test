@@ -5,10 +5,22 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Type of tests to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+        - all
+        - api
+        - web
 
 jobs:
   api-tests:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'api' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,21 +29,24 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Cache Maven dependencies
+      - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-      - name: Install Maven dependencies
-        run: mvn clean compile test-compile
-      - name: Run API Tests and Generate Report
-        run: mvn verify -Dtest=ApiTestRunner
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Run API Tests
+        run: ./gradlew apiTest
       - name: List Cucumber Reports Directory
-        run: ls -l target/cucumber-reports/
+        run: ls -l build/reports/cucumber/api/
       - name: Check for API JSON Report
         run: |
-          if [ ! -f target/cucumber-reports/api-tests.json ]; then
+          if [ ! -f build/reports/cucumber/api/cucumber-api-report.json ]; then
             echo "Cucumber JSON report not found!"
             exit 1
           fi
@@ -40,14 +55,13 @@ jobs:
         with:
           name: api-test-results
           path: |
-            target/cucumber-reports/api/
-            target/cucumber-reports/api-tests.json
-            target/cucumber-reports/api-tests.xml
-            target/surefire-reports/
+            build/reports/cucumber/api/
+            build/test-results/
           retention-days: 30
 
-  ui-tests:
+  web-tests:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'web' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -56,49 +70,51 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Cache Maven dependencies
+      - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Install Chrome Browser
         run: |
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
-      - name: Install Maven dependencies
-        run: mvn clean compile test-compile
-      - name: Run UI Tests and Generate Report
-        run: mvn verify -Dtest=UiTestRunner
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Run Web Tests
+        run: ./gradlew webTest
       - name: List Cucumber Reports Directory
-        run: ls -l target/cucumber-reports/
-      - name: Check for UI JSON Report
+        run: ls -l build/reports/cucumber/web/
+      - name: Check for Web JSON Report
         run: |
-          if [ ! -f target/cucumber-reports/ui-tests.json ]; then
+          if [ ! -f build/reports/cucumber/web/cucumber-web-report.json ]; then
             echo "Cucumber JSON report not found!"
             exit 1
           fi
-      - name: Upload UI Test Results
+      - name: Upload Web Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: ui-test-results
+          name: web-test-results
           path: |
-            target/cucumber-reports/ui/
-            target/cucumber-reports/ui-tests.json
-            target/cucumber-reports/ui-tests.xml
-            target/surefire-reports/
+            build/reports/cucumber/web/
+            build/test-results/
           retention-days: 30
-      - name: Upload UI Test Screenshots
+      - name: Upload Web Test Screenshots
         uses: actions/upload-artifact@v4
         with:
-          name: ui-test-screenshots
+          name: web-test-screenshots
           path: |
-            target/screenshots/
+            build/screenshots/
           retention-days: 7
 
   full-test-suite:
     runs-on: ubuntu-latest
-    needs: [api-tests, ui-tests]
+    needs: [api-tests, web-tests]
+    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_type == 'all' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -107,25 +123,28 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Cache Maven dependencies
+      - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Install Chrome Browser
         run: |
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
-      - name: Install Maven dependencies
-        run: mvn clean compile test-compile
-      - name: Run All Tests and Generate Combined Report
-        run: mvn verify -Dtest=TestRunner
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Run All Tests
+        run: ./gradlew allTests
       - name: List Cucumber Reports Directory
-        run: ls -l target/cucumber-reports/
+        run: ls -l build/reports/cucumber/all/
       - name: Check for Combined JSON Report
         run: |
-          if [ ! -f target/cucumber-reports/all-tests.json ]; then
+          if [ ! -f build/reports/cucumber/all/cucumber-all-report.json ]; then
             echo "Cucumber JSON report not found!"
             exit 1
           fi
@@ -134,21 +153,21 @@ jobs:
         with:
           name: combined-test-results
           path: |
-            target/cucumber-reports/
-            target/surefire-reports/
+            build/reports/cucumber/
+            build/test-results/
           retention-days: 30
       - name: Publish Test Results
         uses: dorny/test-reporter@v1
         with:
           name: Test Results
-          path: 'target/surefire-reports/*.xml'
+          path: 'build/test-results/**/*.xml'
           reporter: java-junit
       - name: Test Summary
         run: |
           echo "## Test Execution Summary" >> $GITHUB_STEP_SUMMARY
           echo "### API Tests" >> $GITHUB_STEP_SUMMARY
           echo "- API test results are available in the artifacts" >> $GITHUB_STEP_SUMMARY
-          echo "### UI Tests" >> $GITHUB_STEP_SUMMARY
-          echo "- UI test results are available in the artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "### Web Tests" >> $GITHUB_STEP_SUMMARY
+          echo "- Web test results are available in the artifacts" >> $GITHUB_STEP_SUMMARY
           echo "### Combined Results" >> $GITHUB_STEP_SUMMARY
           echo "- Combined test reports are available in the artifacts" >> $GITHUB_STEP_SUMMARY

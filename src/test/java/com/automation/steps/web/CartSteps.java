@@ -1,13 +1,13 @@
-package com.automation.steps.ui;
+package com.automation.steps.web;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +31,7 @@ public class CartSteps {
     private WebDriverWait wait;
     private final String baseUrl = "https://www.saucedemo.com/";
 
-    @Before("@ui")
+    @Before("@web")
     public void setUp() {
         if (driver == null) {
             WebDriverManager.chromedriver().setup();
@@ -48,7 +48,7 @@ public class CartSteps {
         }
     }
 
-    @After("@ui")
+    @After("@web")
     public void tearDown() {
         if (driver != null) {
             driver.quit();
@@ -79,17 +79,9 @@ public class CartSteps {
     @Then("Cart badge shows 1 item")
     public void cartBadgeShowsOne() {
         By badgeLocator = By.className("shopping_cart_badge");
-        // Setelah refresh, polling hingga badge muncul dan text = '1', max 10 detik
-        boolean badgeOk = false;
-        for (int i = 0; i < 20; i++) {
-            List<WebElement> badges = driver.findElements(badgeLocator);
-            if (!badges.isEmpty() && "1".equals(badges.get(0).getText())) {
-                badgeOk = true;
-                break;
-            }
-            try { Thread.sleep(500); } catch (InterruptedException ignored) {}
-        }
-        assertTrue(badgeOk, "Cart badge count not updated to 1");
+        WebDriverWait badgeWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement badge = badgeWait.until(ExpectedConditions.visibilityOfElementLocated(badgeLocator));
+        assertEquals("1", badge.getText(), "Cart badge count not updated to 1");
     }
 
     @When("User clicks the cart icon with empty cart")

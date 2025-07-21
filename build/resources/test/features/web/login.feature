@@ -6,7 +6,7 @@ Feature: SauceDemo Website Login
   Background:
     Given I am on the SauceDemo login page
 
-  @ui @positive
+  @web @positive
   Scenario: Successful login with valid credentials
     When I enter username "standard_user"
     And I enter password "secret_sauce"
@@ -14,7 +14,7 @@ Feature: SauceDemo Website Login
     Then I should be on the Products page
     And I should see a title "Products"
 
-  @ui @negative
+  @web @negative
   Scenario: Failed login with invalid username
     When I enter username "invalid_user"
     And I enter password "secret_sauce"
@@ -22,7 +22,7 @@ Feature: SauceDemo Website Login
     Then I should see login error message
     And I should still be on the login page
 
-  @ui @negative
+  @web @negative
   Scenario: Failed login with invalid password
     When I enter username "standard_user"
     And I enter password "wrong_password"
@@ -30,7 +30,7 @@ Feature: SauceDemo Website Login
     Then I should see login error message
     And I should still be on the login page
 
-  @ui @negative
+  @web @negative
   Scenario: Failed login with empty credentials
     When I clear username field
     And I clear password field

@@ -1,4 +1,4 @@
-package com.automation.steps.ui;
+package com.automation.steps.web;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,14 +20,14 @@ public class LoginSteps {
     private WebDriver driver;
     private final String baseUrl = "https://www.saucedemo.com/";
 
-    @Before("@ui")
+    @Before("@web")
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions().addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
     }
 
-    @After("@ui")
+    @After("@web")
     public void tearDown() {
         if (driver != null) {
             driver.quit();

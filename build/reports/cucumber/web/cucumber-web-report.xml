@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="61.614" tests="7" skipped="0" failures="3" errors="0">
+<testcase classname="Add product to cart on SauceDemo" name="Add an existing product to cart" time="15.498">
+<failure type="org.openqa.selenium.TimeoutException" message="Expected condition failed: waiting for visibility of element located by By.className: shopping_cart_badge (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:34803}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:34803/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3e79e67501236c4370d9d19ec46de925">
+<![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.className: shopping_cart_badge (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:34803}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:34803/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3e79e67501236c4370d9d19ec46de925
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.automation.steps.web.CartSteps.cartBadgeShowsOne(CartSteps.java:83)
+	at ✽.Cart badge shows 1 item(classpath:features/web/cart.feature:8)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is logged in to SauceDemo........................................passed
+When User adds the first product to the cart................................passed
+Then Cart badge shows 1 item................................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Add product to cart on SauceDemo" name="Attempt to checkout with empty cart" time="22.993">
+<failure type="org.opentest4j.AssertionFailedError" message="Expected to remain on cart page for empty cart ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;">
+<![CDATA[org.opentest4j.AssertionFailedError: Expected to remain on cart page for empty cart ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:210)
+	at com.automation.steps.web.CartSteps.userSeesEmptyCartError(CartSteps.java:106)
+	at ✽.User sees error message for empty cart(classpath:features/web/cart.feature:14)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is logged in to SauceDemo........................................passed
+When User clicks the cart icon with empty cart..............................passed
+And User proceeds to checkout...............................................passed
+Then User sees error message for empty cart.................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Checkout flow on SauceDemo" name="Full checkout process and logout" time="7.546">
+<failure type="org.openqa.selenium.TimeoutException" message="Expected condition failed: waiting for element found by By.id: menu_button_container to have value &quot;false&quot;. Current value: &quot;&quot; (tried for 3 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:32873}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:32873/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ce893a0bdf34f32ed89fd8e394dbe84a">
+<![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element found by By.id: menu_button_container to have value "false". Current value: "" (tried for 3 second(s) with 500 milliseconds interval)
+Build info: version: '4.15.0', revision: '1d14b5521b'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.14.0-24-generic', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.103, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: /tmp/.org.chromium.Chromium...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:32873}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:32873/devtoo..., se:cdpVersion: 137.0.7151.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ce893a0bdf34f32ed89fd8e394dbe84a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.automation.steps.web.CheckoutSteps.openMenu(CheckoutSteps.java:71)
+	at ✽.I open the menu(classpath:features/web/checkout.feature:11)
+]]>
+</failure>
+<system-out><![CDATA[
+Given I am on the SauceDemo login page......................................passed
+And I have valid username "standard_user" and password "secret_sauce".......passed
+When I login with valid credentials.........................................passed
+And I open the menu.........................................................failed
+Then the Logout link should be visible......................................skipped
+And I should see the page title "Products"..................................skipped
+When I navigate to the first product detail page............................skipped
+Then I should see the product name on detail page...........................skipped
+When I add the product to the cart..........................................skipped
+Then I should see a "Remove" button for that product........................skipped
+When I go to the cart page..................................................skipped
+Then I should see the product "Sauce Labs Backpack" in the cart.............skipped
+When I click the checkout button............................................skipped
+Then I should be on the checkout information page...........................skipped
+When I enter first name "Jan" and last name "Novak" and postal code "10400".skipped
+And I continue to the overview page.........................................skipped
+Then I should be on the checkout overview page..............................skipped
+And I should see the product "Sauce Labs Backpack" in overview..............skipped
+When I logout from the application..........................................skipped
+Then I should be on the login page..........................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="SauceDemo Website Login" name="Successful login with valid credentials" time="4.176">
+<system-out><![CDATA[
+Given I am on the SauceDemo login page......................................passed
+When I enter username "standard_user".......................................passed
+And I enter password "secret_sauce".........................................passed
+And I click the login button................................................passed
+Then I should be on the Products page.......................................passed
+And I should see a title "Products".........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="SauceDemo Website Login" name="Failed login with invalid username" time="4.353">
+<system-out><![CDATA[
+Given I am on the SauceDemo login page......................................passed
+When I enter username "invalid_user"........................................passed
+And I enter password "secret_sauce".........................................passed
+And I click the login button................................................passed
+Then I should see login error message.......................................passed
+And I should still be on the login page.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="SauceDemo Website Login" name="Failed login with invalid password" time="3.877">
+<system-out><![CDATA[
+Given I am on the SauceDemo login page......................................passed
+When I enter username "standard_user".......................................passed
+And I enter password "wrong_password".......................................passed
+And I click the login button................................................passed
+Then I should see login error message.......................................passed
+And I should still be on the login page.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="SauceDemo Website Login" name="Failed login with empty credentials" time="2.591">
+<system-out><![CDATA[
+Given I am on the SauceDemo login page......................................passed
+When I clear username field.................................................passed
+And I clear password field..................................................passed
+And I click the login button................................................passed
+Then I should see validation error message..................................passed
+]]></system-out>
+</testcase>
+</testsuite>
